@@ -27,11 +27,11 @@ You can upload an image of an item or describe it in text, and the system will u
 ```
 ecosort/
 │── app.py                # Flask app entry point
-│── models/
-│   ├── classifier.py     # AI image/text classification logic
-│   ├── fallback.py       # Rule-based classifier
+│── classifier.py         # AI image/text classification logic
+│── fallback.py           # Rule-based classifier
 │── templates/
-│   └── base.html         # Base template with blocks
+│   └── base.html          # Base template with blocks
+|    └─ index.html         # Main template with blocks
 │── static/
 │   ├── style.css         # Main styles
 │   ├── responsive.css    # Responsive styles
@@ -49,7 +49,7 @@ ecosort/
 
 ### 1. Clone the repo
 ```bash
-git clone https://github.com/yourusername/ecosort.git
+git clone https://github.com/Jaimitran28/EcoSort.git
 cd ecosort
 ```
 
