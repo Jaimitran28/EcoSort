@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}EcoSort — Smart Waste Classifier{% endblock %}</title>
+  <meta name="description" content="Upload an image or describe an item to predict whether it's recyclable, compostable, or trash, with practical eco‑friendly tips." />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='animations.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='responsive.css') }}">
+
+  {% block head %}{% endblock %}
+</head>
+<body class="min-h-screen text-white selection:bg-emerald-300 selection:text-black">
+
+  <!-- Intro Overlay -->
+  <div id="introOverlay" class="fixed inset-0 flex flex-col items-center justify-center bg-black z-50">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="EcoSort Logo" class="intro-logo w-48 md:w-56 mb-6">
+    <h1 class="intro-logo text-5xl md:text-6xl font-extrabold text-white" style="font-family: 'Inter', sans-serif;">
+      EcoSort
+    </h1>
+  </div>
+
+  <!-- Main Content -->
+  <div id="mainContent" class="opacity-100 transition-opacity duration-1000">
+    {% block content %}{% endblock %}
+  </div>
+
+  <!-- JS -->
+  <script src="{{ url_for('static', filename='animations.js') }}"></script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

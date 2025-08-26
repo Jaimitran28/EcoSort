@@ -1,0 +1,67 @@
+/* =======================
+   Responsive Layout Rules
+   ======================= */
+
+/* Base responsive font scaling */
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 1024px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+/* =======================
+   Intro Overlay Responsiveness
+   ======================= */
+#introOverlay {
+  text-align: center;
+  padding: 1rem;
+}
+
+#introOverlay img.intro-logo {
+  width: 40vw;        /* scale relative to screen width */
+  max-width: 200px;   /* don’t get too big */
+  min-width: 100px;   /* don’t get too small */
+  height: auto;
+}
+
+#introOverlay h1.intro-logo {
+  font-size: clamp(1.8rem, 5vw, 3.5rem); /* auto scales with viewport */
+  line-height: 1.2;
+  margin-top: 1rem;
+}
+
+/* =======================
+   General Responsiveness
+   ======================= */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Make buttons and inputs scale */
+button, input, textarea {
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  padding: 0.5rem 1rem;
+}

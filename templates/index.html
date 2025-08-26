@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block title %}EcoSort — Smart Waste Classifier{% endblock %}
+
+{% block content %}
+<header class="px-6 md:px-10 pt-8 pb-4">
+  <div class="max-w-6xl mx-auto flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="logo-box flex items-center gap-3">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="EcoSort Logo" class="logo-img w-12 h-12">
+        <div>
+          <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight">EcoSort</h1>
+          <p class="text-xs font-bold text-white -mt-1">Smarter sorting for a cleaner planet</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="px-6 md:px-10 pb-20">
+  <div class="max-w-6xl mx-auto grid md:grid-cols-5 gap-6 md:gap-8">
+
+    <!-- Left Section -->
+    <section class="md:col-span-3 glass rounded-3xl p-5 md:p-8">
+      <h2 class="text-xl md:text-2xl font-black mb-4 md:mb-6">Describe or drop an item</h2>
+      <!-- Text input -->
+      <div class="flex gap-2 mb-6">
+        <input id="textInput" type="text" placeholder="Type here…" class="flex-1 rounded-2xl bg-white/10 border border-white/15 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-400/50" />
+        <button id="predictTextBtn" class="btn-primary rounded-2xl px-5">Predict</button>
+      </div>
+
+      <!-- File dropzone -->
+      <div id="dropzone" class="dropzone rounded-3xl p-6 md:p-8 flex flex-col items-center justify-center text-center cursor-pointer bg-white/5">
+        <input id="fileInput" type="file" accept="image/*" class="hidden" />
+        <div class="w-16 h-16 rounded-2xl mb-3" style="background:linear-gradient(135deg, rgba(0,194,255,0.25), rgba(39,226,164,0.25)); border:1px solid rgba(255,255,255,0.12);"></div>
+        <p class="text-lg font-semibold">Drag & drop an image here</p>
+        <p class="text-white/70 text-sm mt-1">or click to browse</p>
+      </div>
+
+      <!-- Image preview & analyze -->
+      <div id="imagePreviewWrap" class="hidden mt-5">
+        <div class="flex items-center justify-between">
+          <p class="text-sm text-white/70">Image preview</p>
+          <button id="clearImageBtn" class="text-xs text-white/70 underline hover:text-white">Clear</button>
+        </div>
+        <div class="mt-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <img id="preview" alt="preview" class="rounded-2xl w-full object-cover max-h-72 bg-black/20" />
+          <div class="flex flex-col gap-3">
+            <button id="predictImageBtn" class="btn-primary rounded-2xl px-5 py-3">Analyze Image</button>
+            <div class="text-xs text-white/70">Runs on-device using MobileNet and ResNet fallback; no images are uploaded.</div>
+            <div id="rawPredictions" class="text-xs text-white/70 hidden"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right Section -->
+    <section class="md:col-span-2 glass rounded-3xl p-5 md:p-8 relative">
+
+      <!-- Top Buttons -->
+      <div class="flex items-center justify-between mb-4 relative">
+        <h2 class="text-xl md:text-2xl font-black">Result</h2>
+        <div class="flex gap-2 relative">
+          <div class="relative">
+            <button id="predictsBtn" class="btn-primary bg-white/10 text-white px-3 py-1 rounded-2xl">
+              0 Predicts
+            </button>
+            <!-- Predicts Popup -->
+            <div id="predictsPopup" class="history-popup hidden">
+              <div id="predictsHistoryContainer" class="flex flex-col gap-2"></div>
+            </div>
+          </div>
+
+          <div class="relative">
+            <button id="uploadsBtn" class="btn-primary bg-white/10 text-white px-3 py-1 rounded-2xl">
+              0 Uploads
+            </button>
+            <!-- Uploads Popup -->
+            <div id="uploadsPopup" class="history-popup hidden">
+              <div id="uploadsHistoryContainer" class="flex flex-col gap-2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Default message -->
+      <div id="resultEmpty" class="text-white/70 mb-4">
+        Enter a description or analyze an image to see recommendations.
+      </div>
+
+      <!-- Result card -->
+      <div id="resultCard" class="hidden">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <div class="text-white/70 text-xs">Predicted category</div>
+            <div id="predictedLabel" class="text-2xl font-extrabold mt-1">—</div>
+          </div>
+          <span id="predictedBadge" class="badge">—</span>
+        </div>
+        <div>
+          <div class="text-white/70 text-xs mb-2">Confidence</div>
+          <div class="progress mb-4"><span id="confidenceBar" style="width:0%"></span></div>
+        </div>
+        <div>
+          <div class="text-white/70 text-xs mb-2">Top label(s)</div>
+          <div id="topLabels" class="text-sm">—</div>
+        </div>
+        <div class="mt-6">
+          <div class="text-white/70 text-xs mb-2">Disposal tips</div>
+          <ul id="tipsList" class="tips text-sm leading-relaxed"></ul>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+    <p class="session-note">
+    ❤️ Don’t worry — your data never leaves this page.  
+    It’s only stored for this session.
+  </p>
+</div>
+</main>
+{% endblock %}

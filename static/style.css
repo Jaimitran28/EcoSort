@@ -1,0 +1,342 @@
+/* Base Styles */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Glass Panels */
+.glass {
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, #00c2ff, #27e2a4);
+  color: white;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 194, 255, 0.4);
+}
+
+/* Dropzone */
+.dropzone {
+  border: 2px dashed rgba(255, 255, 255, 0.2);
+  transition: background 0.3s ease, border 0.3s ease;
+}
+.dropzone:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(0, 194, 255, 0.6);
+}
+
+/* Result Box */
+.result-box {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 1rem;
+  border-radius: 1.5rem;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.result-box.pop {
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+/* Progress Bar */
+.progress {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.progress span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(135deg, #00c2ff, #27e2a4);
+  width: 0%;
+  transition: width 0.5s ease;
+  border-radius: 4px;
+}
+
+/* Badges */
+.badge {
+  background: linear-gradient(135deg, #00c2ff, #27e2a4);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+}
+
+/* Theme Colors */
+.theme-trash {
+  background: linear-gradient(135deg, #8B0000, #B22222, #FF6347);
+}
+.theme-compost {
+  background: linear-gradient(135deg, #FFD700, #FFA500, #FFFACD);
+}
+.theme-recycle {
+  background: linear-gradient(135deg, #00FF7F, #32CD32, #008000);
+}
+.theme-default {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+/* Particle Container */
+.particle-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  opacity: 0.7;
+}
+
+/* Floating animation */
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(-50px) translateX(20px);
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0.7;
+  }
+}
+
+/* Misc */
+input, textarea {
+  color: #fff;
+}
+
+input::placeholder {
+  color: rgba(255,255,255,0.6);
+}
+
+/* History Buttons */
+.btn-history {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  color: white;
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn-history:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* History Panel Cards */
+.history-card {
+  border-radius: 1rem;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  color: white;
+  font-size: 0.875rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.history-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+/* Type Colors for Cards */
+.history-card.trash {
+  background: linear-gradient(135deg, #8B0000, #B22222, #FF6347);
+}
+.history-card.compost {
+  background: linear-gradient(135deg, #FFD700, #FFA500, #FFFACD);
+}
+.history-card.recycle {
+  background: linear-gradient(135deg, #00FF7F, #32CD32, #008000);
+}
+
+/* Image Cards inside History */
+.history-card img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* Text inside History Cards */
+.history-card .history-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+/* Small label badges inside history card */
+.history-card .history-badge {
+  padding: 0.125rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: white;
+  display: inline-block;
+}
+
+/* History Cards */
+.history-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border-radius: 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.history-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Card type colors */
+.history-trash {
+  background: linear-gradient(135deg, #8B0000, #B22222, #FF6347);
+}
+.history-compost {
+  background: linear-gradient(135deg, #FFD700, #FFA500, #FFFACD);
+  color: #000; /* Better contrast on yellow */
+}
+.history-recycle {
+  background: linear-gradient(135deg, #00FF7F, #32CD32, #008000);
+}
+
+/* Small text for details inside cards */
+.history-card-text {
+  flex: 1;
+  margin-right: 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Tiny image inside uploads card */
+.history-card-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 0.75rem;
+  object-fit: cover;
+  margin-right: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Labels inside uploads card */
+.history-labels {
+  font-size: 0.75rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+/* History Popups */
+.history-popup {
+  position: absolute;
+  top: 120%; /* slightly below buttons */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 270px; /* slightly wider */
+  max-height: 320px;
+  overflow-y: auto;
+  background: rgba(0, 0, 0, 0.6); /* translucent */
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 10px;
+  z-index: 50;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  display: none; /* hidden by default */
+}
+.history-popup.show {
+  display: block;
+}
+
+/* Scrollbar styling */
+.history-popup::-webkit-scrollbar {
+  width: 6px;
+}
+.history-popup::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+}
+.history-popup::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+.history-popup .history-card {
+  margin-bottom: 0.3rem;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.75rem;
+  font-size: 0.85rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.history-popup .history-card img {
+  width: 32px;
+  height: 32px;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+.progress {
+  width: 100%;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+#confidenceBar {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ff4d4d, #ffcc00, #4caf50);
+  border-radius: 12px;
+  transition: width 1.2s ease-in-out; /* smooth animation */
+}
+
+
+.session-note {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #ffffff;              /* white text */
+  text-shadow: 0px 0px 4px rgba(0,0,0,0.6); /* readability */
+  line-height: 1.4;
+}
